@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ファイル分析ダッシュボード</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <!-- 音声分析用のライブラリ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/7.0.0/wavesurfer.min.js"></script>
+    <!-- 動画分析用のライブラリ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ffmpeg.js/4.2.9003/ffmpeg.min.js"></script>
+    <!-- 音声認識用のライブラリ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>ファイル分析ダッシュボード</h1>
+        
+        <div id="dropZone" class="drop-zone">
+            <p>ファイルをドラッグ＆ドロップ</p>
+            <p>または</p>
+            <button class="upload-button">ファイルを選択</button>
+            <input type="file" id="fileInput" accept=".mp3,.mp4,.csv" style="display: none;">
+        </div>
+
+        <div class="results-container">
+            <div id="audioResult" class="result-section">
+                <h3>音声分析</h3>
+                <div class="result-content">
+                    <div class="analysis-section">
+                        <h4>会話分析</h4>
+                        <div class="analysis-grid">
+                            <div class="analysis-card">
+                                <h5>会話速度</h5>
+                                <div id="initialSpeechRate" class="analysis-value">0 単語/分</div>
+                            </div>
+                            <div class="analysis-card">
+                                <h5>質問回数</h5>
+                                <div id="initialQuestionCount" class="analysis-value">0 回</div>
+                            </div>
+                            <div class="analysis-card">
+                                <h5>フィラー回数</h5>
+                                <div id="initialFillerCount" class="analysis-value">0 回</div>
+                            </div>
+                            <div class="analysis-card">
+                                <h5>話者比率</h5>
+                                <div id="initialSpeakerRatio" class="analysis-value">A: 0% / B: 0%</div>
+                            </div>
+                            <div class="analysis-card">
+                                <h5>頻出キーワード</h5>
+                                <div id="initialKeywords" class="analysis-value keywords-list">
+                                    <span class="no-keywords">未検出</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="transcription-section">
+                        <h4>音声認識結果</h4>
+                        <div id="initialTranscriptionResult" class="transcription-box">
+                            <p>音声ファイルをアップロードしてください</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="videoResult" class="result-section">
+                <h3>動画分析</h3>
+                <div class="result-content">
+                    <div class="analysis-section">
+                        <h4>会話分析</h4>
+                        <div class="analysis-grid">
+                            <div class="analysis-card">
+                                <h5>会話速度</h5>
+                                <div id="initialVideoSpeechRate" class="analysis-value">0 単語/分</div>
+                            </div>
+                            <div class="analysis-card">
+                                <h5>質問回数</h5>
+                                <div id="initialVideoQuestionCount" class="analysis-value">0 回</div>
+                            </div>
+                            <div class="analysis-card">
+                                <h5>フィラー回数</h5>
+                                <div id="initialVideoFillerCount" class="analysis-value">0 回</div>
+                            </div>
+                            <div class="analysis-card">
+                                <h5>話者比率</h5>
+                                <div id="initialVideoSpeakerRatio" class="analysis-value">A: 0% / B: 0%</div>
+                            </div>
+                            <div class="analysis-card">
+                                <h5>頻出キーワード</h5>
+                                <div id="initialVideoKeywords" class="analysis-value keywords-list">
+                                    <span class="no-keywords">未検出</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="transcription-section">
+                        <h4>音声認識結果</h4>
+                        <div id="initialVideoTranscriptionResult" class="transcription-box">
+                            <p>動画ファイルをアップロードしてください</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="csvResult" class="result-section">
+                <h3>CSV分析</h3>
+                <div class="result-content">
+                    <div class="csv-info">
+                        <p>CSVファイルをアップロードしてください</p>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-section">
+                            <h4>対象コール総数比較</h4>
+                            <canvas id="callCountChart"></canvas>
+                        </div>
+                        <div class="chart-section">
+                            <h4>対象コール合計時間比較</h4>
+                            <canvas id="callDurationChart"></canvas>
+                        </div>
+                        <div class="chart-section">
+                            <h4>話者比率比較</h4>
+                            <canvas id="speakerRatioChart"></canvas>
+                        </div>
+                        <div class="chart-section">
+                            <h4>話速差比較</h4>
+                            <canvas id="speechRateChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html> 
