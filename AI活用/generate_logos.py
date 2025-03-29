@@ -6,11 +6,11 @@ import re
 services = {
     "Bolt": "bolt",
     "Yoom": "yoom",
-    "Windsurf": "windsurf",  # 名前を短縮
+    "Windsurf": "windsurf",
     "Lovable": "lovable",
     "Make": "make",
     "Manus": "manus",
-    "ChatGPT": "chatgpt-operator",  # 名前を短縮
+    "ChatGPT": "chatgpt-operator",
     "神威": "kamui",
     "Mapify": "mapify",
     "NoLang": "nolang",
@@ -18,25 +18,9 @@ services = {
     "Aomni": "aomni",
     "Origami": "origami",
     "IruSiru": "irusiru",
-    "HeyGen": "heygen"
+    "HeyGen": "heygen",
+    "Rork": "rork"
 }
-
-def get_font_size(service_name, size):
-    # 日本語文字が含まれているかチェック
-    has_japanese = any(ord(c) > 127 for c in service_name)
-    
-    # 基本のフォントサイズを設定
-    if has_japanese:
-        base_size = 40
-    else:
-        base_size = 36
-    
-    # サービス名の長さに応じてフォントサイズを調整
-    length_factor = len(service_name)
-    if length_factor > 8:
-        base_size = int(base_size * (8 / length_factor))
-    
-    return min(base_size, int(size[0] / 3))
 
 def generate_logo(service_name, file_name):
     # 画像サイズ
@@ -46,8 +30,8 @@ def generate_logo(service_name, file_name):
     image = Image.new('RGB', size, '#FFFFFF')
     draw = ImageDraw.Draw(image)
     
-    # フォントサイズを計算
-    font_size = get_font_size(service_name, size)
+    # フォントサイズをサービス名の長さに応じて調整
+    font_size = min(32, int(120 / (len(service_name) * 0.6)))
     
     try:
         # システムフォントを使用（日本語対応）
@@ -73,7 +57,7 @@ def generate_logo(service_name, file_name):
     accent_color = '#{:06x}'.format(hash_value % 0x1000000)
     
     # 背景の円を描画
-    circle_margin = 15
+    circle_margin = 10
     draw.ellipse([circle_margin, circle_margin, size[0]-circle_margin, size[1]-circle_margin], 
                  fill=accent_color)
     
@@ -84,10 +68,10 @@ def generate_logo(service_name, file_name):
     if not os.path.exists('images'):
         os.makedirs('images')
     image.save(f'images/{file_name}.png')
-    print(f"Generated logo for {service_name} with font size {font_size}")
 
 def main():
     for service_name, file_name in services.items():
+        print(f"Generating logo for {service_name} as {file_name}.png")
         generate_logo(service_name, file_name)
 
 if __name__ == "__main__":
