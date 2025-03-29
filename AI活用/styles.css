@@ -119,9 +119,9 @@ header h1 {
 .nav-menu a {
     color: var(--text-color);
     text-decoration: none;
-    padding: 8px 16px;
+    padding: 6px 12px;
     display: block;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     transition: all 0.3s ease;
     border-radius: 8px;
     font-weight: 500;
@@ -475,8 +475,8 @@ footer p {
     }
 
     .nav-menu a {
-        padding: 6px 12px;
-        font-size: 0.9rem;
+        padding: 4px 8px;
+        font-size: 0.8rem;
     }
 
     .nav-menu li:not(:last-child)::after {
