@@ -53,44 +53,37 @@ header h1 {
 .nav-menu {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    gap: 5px;
-    margin: 20px 0;
-    padding: 0;
+    justify-content: center;
+    align-items: center;
     list-style: none;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.nav-menu::-webkit-scrollbar {
-    display: none;
+    padding: 1rem;
+    margin: 0;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .nav-menu li {
-    flex: 0 0 auto;
+    margin: 0 0.5rem;
 }
 
 .nav-menu a {
-    color: var(--text-color);
     text-decoration: none;
-    padding: 6px 12px;
+    color: #333;
+    padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: all 0.3s ease;
-    background-color: var(--card-background);
-    border: 1px solid var(--border-color);
-    display: block;
-    white-space: nowrap;
-    font-size: 0.9rem;
+    font-weight: 500;
 }
 
 .nav-menu a:hover {
-    background-color: var(--accent-color);
-    color: var(--background-color);
-    transform: translateY(-1px);
+    background-color: #007bff;
+    color: white;
+}
+
+.nav-menu a.active {
+    background-color: #007bff;
+    color: white;
 }
 
 /* メインコンテンツ */
