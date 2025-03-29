@@ -53,14 +53,21 @@ header h1 {
 .nav-menu {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    gap: 10px;
+    justify-content: flex-start;
+    gap: 5px;
     margin: 20px 0;
     padding: 0;
     list-style: none;
     flex-wrap: nowrap;
     overflow-x: auto;
     white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.nav-menu::-webkit-scrollbar {
+    display: none;
 }
 
 .nav-menu li {
@@ -70,19 +77,20 @@ header h1 {
 .nav-menu a {
     color: var(--text-color);
     text-decoration: none;
-    padding: 8px 15px;
-    border-radius: 5px;
+    padding: 6px 12px;
+    border-radius: 4px;
     transition: all 0.3s ease;
     background-color: var(--card-background);
     border: 1px solid var(--border-color);
     display: block;
     white-space: nowrap;
+    font-size: 0.9rem;
 }
 
 .nav-menu a:hover {
     background-color: var(--accent-color);
     color: var(--background-color);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
 /* メインコンテンツ */
@@ -397,6 +405,16 @@ footer p {
 
     .category-intro h2 {
         font-size: 2rem;
+    }
+
+    .nav-menu {
+        gap: 3px;
+        margin: 15px 0;
+    }
+
+    .nav-menu a {
+        padding: 4px 8px;
+        font-size: 0.8rem;
     }
 }
 
