@@ -49,39 +49,45 @@ header h1 {
     text-transform: uppercase;
 }
 
+/* ナビゲーションメニュー */
 nav ul {
-    list-style: none;
     display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 0;
+    list-style: none;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+nav li {
+    flex: 0 0 auto;
 }
 
 nav a {
-    text-decoration: none;
     color: var(--text-color);
-    font-weight: 500;
-    padding: 0.5rem 1rem;
+    text-decoration: none;
+    padding: 8px 15px;
     border-radius: 0;
     transition: all 0.3s ease;
-    font-size: 0.95rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    position: relative;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    display: block;
+    white-space: nowrap;
+}
+
+nav a:hover {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    transform: translateY(-2px);
 }
 
 nav a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--accent-color);
-    transition: width 0.3s ease;
-}
-
-nav a:hover::after {
-    width: 100%;
+    display: none;
 }
 
 /* メインコンテンツ */
