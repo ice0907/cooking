@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>プロンプト集 - AI活用ガイド</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .toggle-content {
+            display: none;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+        }
+        
+        .toggle-button {
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-button:hover {
+            background: rgba(255, 221, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -35,90 +59,105 @@
     </header>
 
     <main>
-        <section class="intro">
-            <h1>プロンプト集</h1>
+        <section class="category-intro">
+            <h2>プロンプト集</h2>
             <p>AIツールを効果的に活用するためのプロンプトテンプレートとベストプラクティスを紹介します。</p>
         </section>
 
-        <section class="tools">
-            <h2>プロンプトテンプレート</h2>
-            <div class="tool-grid">
-                <div class="tool-card">
-                    <img src="images/chatgpt.png" alt="ChatGPT">
-                    <h3>ChatGPT</h3>
-                    <p>汎用的なAIチャットボット</p>
-                    <div class="tool-tips">
-                        <h4>プロンプトの基本構造</h4>
-                        <ul>
-                            <li>役割の定義（例：「あなたは〇〇の専門家です」）</li>
-                            <li>具体的な指示（例：「以下の点に注意して回答してください」）</li>
-                            <li>出力形式の指定（例：「箇条書きで回答してください」）</li>
-                        </ul>
-                    </div>
-                </div>
+        <section class="comparison">
+            <div class="comparison-table">
+                <h3>プロンプトテンプレート集</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>カテゴリ</th>
+                            <th>目的</th>
+                            <th>プロンプト例</th>
+                            <th>使用上の注意点</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>文章作成</td>
+                            <td>ブログ記事の執筆</td>
+                            <td>
+                                <div>
+                                    <button class="toggle-button" onclick="toggleContent(this)">全文を表示</button>
+                                    <div class="toggle-content">
+                                        あなたは[分野]の専門家です。以下の要件に従って、ブログ記事を作成してください：
 
-                <div class="tool-card">
-                    <img src="images/claude.png" alt="Claude">
-                    <h3>Claude</h3>
-                    <p>高度な分析と文章生成が可能なAI</p>
-                    <div class="tool-tips">
-                        <h4>効果的なプロンプト例</h4>
-                        <ul>
-                            <li>「以下の文章を要約し、重要なポイントを3つ挙げてください」</li>
-                            <li>「このコードの問題点を分析し、改善案を提案してください」</li>
-                            <li>「〇〇について、初心者にもわかりやすく説明してください」</li>
-                        </ul>
-                    </div>
-                </div>
+                                        1. タイトル：[キーワード]に関する記事
+                                        2. 対象読者：[読者層]
+                                        3. 文字数：約[数字]文字
+                                        4. 含めるべき要素：
+                                           - 導入部分
+                                           - 主要なポイント（3-5個）
+                                           - 具体例や事例
+                                           - まとめと次のアクション
+                                        5. SEO対策：[キーワード]を自然に含める
+                                        6. 文体：読みやすく、専門用語は適宜説明を入れる
+                                    </div>
+                                </div>
+                            </td>
+                            <td>キーワードの過剰な使用を避け、自然な文章になるよう注意</td>
+                        </tr>
+                        <tr>
+                            <td>コード生成</td>
+                            <td>機能実装とデバッグ</td>
+                            <td>
+                                <div>
+                                    <button class="toggle-button" onclick="toggleContent(this)">全文を表示</button>
+                                    <div class="toggle-content">
+                                        以下の要件に基づいて、[プログラミング言語]のコードを生成してください：
 
-                <div class="tool-card">
-                    <img src="images/midjourney.png" alt="Midjourney">
-                    <h3>Midjourney</h3>
-                    <p>高品質な画像生成AI</p>
-                    <div class="tool-tips">
-                        <h4>画像生成のプロンプト例</h4>
-                        <ul>
-                            <li>「〇〇のスタイルで、△△を描いてください」</li>
-                            <li>「カラーパレット：〇〇、△△、□□」</li>
-                            <li>「構図：〇〇、光の方向：△△」</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+                                        1. 目的：[実装したい機能の説明]
+                                        2. 入力：[期待される入力データの形式]
+                                        3. 出力：[期待される出力の形式]
+                                        4. 制約条件：
+                                           - パフォーマンス要件
+                                           - メモリ使用量
+                                           - 外部ライブラリの使用可否
+                                        5. エラーハンドリング：
+                                           - 考慮すべき例外ケース
+                                           - エラーメッセージの形式
+                                        6. コードスタイル：[準拠すべきコーディング規約]
+                                    </div>
+                                </div>
+                            </td>
+                            <td>セキュリティ面での考慮が必要な場合は明示的に指定</td>
+                        </tr>
+                        <tr>
+                            <td>画像生成</td>
+                            <td>高品質な画像の生成</td>
+                            <td>
+                                <div>
+                                    <button class="toggle-button" onclick="toggleContent(this)">全文を表示</button>
+                                    <div class="toggle-content">
+                                        以下の要素を考慮して、画像を生成してください：
 
-        <section class="tips">
-            <h2>プロンプト作成のコツ</h2>
-            <div class="tips-grid">
-                <div class="tip-card">
-                    <h3>1. 具体的な指示を出す</h3>
-                    <p>曖昧な表現を避け、具体的な要件を指定します。</p>
-                    <ul>
-                        <li>「良い」→「〇〇の観点で優れている」</li>
-                        <li>「簡単に」→「3ステップで」</li>
-                        <li>「詳しく」→「以下の点について説明してください」</li>
-                    </ul>
-                </div>
-
-                <div class="tip-card">
-                    <h3>2. 文脈を提供する</h3>
-                    <p>必要な背景情報や制約条件を明確に伝えます。</p>
-                    <ul>
-                        <li>対象読者（例：「中学生向けに」）</li>
-                        <li>使用目的（例：「プレゼンテーション用に」）</li>
-                        <li>制約条件（例：「100文字以内で」）</li>
-                    </ul>
-                </div>
-
-                <div class="tip-card">
-                    <h3>3. 段階的な指示</h3>
-                    <p>複雑なタスクは小さなステップに分けて指示します。</p>
-                    <ul>
-                        <li>「まず〇〇を確認し、次に△△を行い、最後に□□を実行してください」</li>
-                        <li>各ステップの結果を確認しながら進める</li>
-                        <li>必要に応じて指示を調整する</li>
-                    </ul>
-                </div>
+                                        1. 主題：[描きたいもの/シーン]
+                                        2. スタイル：
+                                           - アートスタイル：[具体的なスタイル]
+                                           - 参考アーティスト：[アーティスト名]
+                                        3. 技術的要素：
+                                           - 解像度：[サイズ指定]
+                                           - アスペクト比：[比率]
+                                           - カラーパレット：[使用したい色]
+                                        4. 構図：
+                                           - カメラアングル
+                                           - 被写体の位置
+                                           - 光源の方向と強さ
+                                        5. 追加設定：
+                                           - 細部の質感
+                                           - 背景の処理
+                                           - 特殊効果
+                                    </div>
+                                </div>
+                            </td>
+                            <td>著作権に配慮し、特定のアーティストの模倣は避ける</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
     </main>
@@ -126,5 +165,18 @@
     <footer>
         <p>&copy; 2025 AI活用ガイド. All rights reserved.</p>
     </footer>
+
+    <script>
+        function toggleContent(button) {
+            const content = button.nextElementSibling;
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+                button.textContent = '折りたたむ';
+            } else {
+                content.style.display = 'none';
+                button.textContent = '全文を表示';
+            }
+        }
+    </script>
 </body>
 </html> 
