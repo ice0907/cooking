@@ -101,9 +101,9 @@ header h1 {
 
 /* カテゴリ間のスペース */
 .nav-menu li:nth-child(1)::before,
-.nav-menu li:nth-child(2)::before,
 .nav-menu li:nth-child(5)::before,
-.nav-menu li:nth-child(10)::before {
+.nav-menu li:nth-child(10)::before,
+.nav-menu li:nth-child(12)::before {
     content: '';
     position: absolute;
     left: -12px;
@@ -485,9 +485,9 @@ footer p {
     }
 
     .nav-menu li:nth-child(1)::before,
-    .nav-menu li:nth-child(2)::before,
     .nav-menu li:nth-child(5)::before,
-    .nav-menu li:nth-child(10)::before {
+    .nav-menu li:nth-child(10)::before,
+    .nav-menu li:nth-child(12)::before {
         left: -8px;
         height: 16px;
     }
