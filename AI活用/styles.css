@@ -32,7 +32,7 @@ body {
 header {
     background-color: rgba(0, 0, 0, 0.95);
     box-shadow: var(--shadow-sm);
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 4rem;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -155,9 +155,9 @@ header h1 {
 
 /* メインコンテンツ */
 main {
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 3rem 2rem;
+    padding: 3rem 4rem;
 }
 
 /* ヒーローセクション */
@@ -426,10 +426,8 @@ main {
 /* フッター */
 footer {
     text-align: center;
-    padding: 3rem 2rem;
-    background-color: var(--background-color);
-    margin-top: 4rem;
-    color: var(--text-color);
+    padding: 2rem 4rem;
+    background-color: var(--secondary-color);
     border-top: 1px solid var(--border-color);
 }
 
@@ -458,7 +456,7 @@ footer p {
     }
 
     main {
-        padding: 1.5rem 1rem;
+        padding: 2rem 1rem;
     }
 
     .categories, .tools {
@@ -513,6 +511,10 @@ footer p {
 
     .tool-info p {
         font-size: 0.9rem;
+    }
+
+    footer {
+        padding: 1.5rem 1rem;
     }
 }
 
