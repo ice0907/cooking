@@ -304,8 +304,15 @@ main {
 /* Geminiロゴ用のスタイル */
 .tool-logo[src*="gemini"] {
     background-color: transparent;
-    padding: 8px;
+    padding: 0;
     box-shadow: none;
+    border-radius: 0;
+}
+
+/* Perplexityロゴ用のスタイル */
+.tool-logo[src*="perplexity"] {
+    background-color: transparent;
+    padding: 8px;
 }
 
 /* ロゴが読み込めない場合のフォールバック */
@@ -529,8 +536,13 @@ footer p {
     }
 
     .tool-logo[src$=".svg"],
-    .tool-logo[src*="gemini"] {
+    .tool-logo[src*="gemini"],
+    .tool-logo[src*="perplexity"] {
         padding: 4px;
+    }
+
+    .tool-logo[src*="gemini"] {
+        padding: 0;
     }
 
     .tool-logo[src=""]:after {
