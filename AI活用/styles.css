@@ -813,7 +813,6 @@ footer p {
 /* 比較表のスタイル */
 .comparison {
     margin: 2rem 0;
-    padding: 0;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 }
@@ -827,12 +826,13 @@ footer p {
 }
 
 .table-container {
-    margin: 1rem 0;
     padding: 2rem;
+    margin: 0;
     background-color: var(--card-background);
-    border-radius: 16px;
+    border: 1px solid var(--border-color);
     box-shadow: var(--shadow-md);
-    min-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .comparison table {
@@ -841,6 +841,7 @@ footer p {
     margin: 0;
     background-color: var(--card-background);
     table-layout: fixed;
+    min-width: 800px;
 }
 
 .comparison th,
@@ -852,65 +853,45 @@ footer p {
     word-wrap: break-word;
     word-break: break-word;
     hyphens: auto;
-    min-width: 120px;
 }
 
 .comparison th {
-    background-color: rgba(255, 221, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
     font-weight: 600;
-    text-align: center;
-    letter-spacing: 0.05em;
-}
-
-.comparison td {
     text-align: left;
+    white-space: normal;
 }
 
-.comparison td:first-child {
-    font-weight: 600;
-    white-space: nowrap;
-}
-
-.comparison ul {
-    margin: 0;
-    padding-left: 1.2rem;
-    list-style-type: disc;
-}
-
-.comparison li {
-    margin: 0.5rem 0;
-    line-height: 1.4;
-    color: var(--text-color);
-    opacity: 0.9;
-}
-
-/* レスポンシブ対応 */
+/* モバイル表示の調整 */
 @media (max-width: 768px) {
     .comparison {
         margin: 1rem -1rem;
-        padding: 0 1rem;
+        padding: 0;
     }
 
     .table-container {
         padding: 1rem;
-        margin: 0;
-        border-radius: 8px;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+        border-radius: 0;
     }
 
     .comparison table {
         font-size: 0.85rem;
-        min-width: 600px;
     }
 
     .comparison th,
     .comparison td {
         padding: 0.8rem;
-        min-width: 150px;
-        max-width: 250px;
         font-size: 0.85rem;
         line-height: 1.4;
+        min-width: 120px;
+    }
+
+    .comparison th {
+        position: sticky;
+        top: 0;
+        background-color: var(--card-background);
+        z-index: 2;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .comparison td:first-child {
@@ -918,10 +899,32 @@ footer p {
         left: 0;
         background-color: var(--card-background);
         z-index: 1;
-        min-width: 100px;
-        max-width: 120px;
+        box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+        font-weight: 600;
     }
 
+    /* 最初の列が固定されている場合の角の処理 */
+    .comparison th:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 3;
+    }
+
+    /* テーブル内のテキストの折り返し設定 */
+    .comparison th,
+    .comparison td {
+        white-space: normal;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+
+    /* テーブル内のリンクのスタイル */
+    .comparison a {
+        word-break: break-all;
+    }
+
+    /* テーブル内のコードブロックのスタイル */
     .comparison pre,
     .comparison code {
         white-space: pre-wrap;
@@ -933,31 +936,5 @@ footer p {
         background: rgba(0, 0, 0, 0.2);
         border-radius: 4px;
         overflow-x: auto;
-    }
-
-    .toggle-content {
-        max-width: 100%;
-        overflow-x: hidden;
-        word-wrap: break-word;
-        word-break: break-word;
-    }
-
-    .tool-card {
-        margin: 0;
-        width: 100%;
-    }
-
-    .tool-info {
-        width: 100%;
-    }
-
-    .category-card {
-        margin: 0;
-        width: 100%;
-    }
-
-    main {
-        padding: 1rem;
-        overflow-x: hidden;
     }
 } 
