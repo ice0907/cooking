@@ -275,6 +275,7 @@ main {
     display: flex;
     align-items: flex-start;
     gap: 32px;
+    min-height: 200px;
 }
 
 .tool-card:hover {
@@ -316,6 +317,11 @@ main {
 
 .tool-info {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    min-height: 120px;
 }
 
 .tool-info h3 {
@@ -330,12 +336,14 @@ main {
     opacity: 0.9;
     font-size: 1rem;
     line-height: 1.8;
+    flex: 1;
 }
 
 .tool-actions {
     display: flex;
     gap: 16px;
     margin-top: auto;
+    width: 100%;
 }
 
 /* ボタン */
@@ -497,11 +505,8 @@ footer p {
     }
 
     .tool-card {
+        min-height: auto;
         padding: 24px;
-        gap: 24px;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
     }
 
     .tool-logo {
@@ -516,26 +521,16 @@ footer p {
     }
 
     .tool-info {
-        width: 100%;
+        min-height: auto;
+        text-align: center;
     }
 
     .tool-info p {
-        font-size: 0.95rem;
         margin-bottom: 20px;
-        line-height: 1.7;
     }
 
     .tool-actions {
         justify-content: center;
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-    .button {
-        padding: 0.75rem 2rem;
-        font-size: 0.9rem;
-        width: 100%;
-        max-width: 300px;
     }
 
     .comparison td:first-child {
