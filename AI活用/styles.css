@@ -50,10 +50,10 @@ header h1 {
 }
 
 /* ナビゲーションメニュー */
-nav ul {
+.nav-menu {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 10px;
     margin: 20px 0;
     padding: 0;
@@ -61,18 +61,17 @@ nav ul {
     flex-wrap: nowrap;
     overflow-x: auto;
     white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
 }
 
-nav li {
+.nav-menu li {
     flex: 0 0 auto;
 }
 
-nav a {
+.nav-menu a {
     color: var(--text-color);
     text-decoration: none;
     padding: 8px 15px;
-    border-radius: 0;
+    border-radius: 5px;
     transition: all 0.3s ease;
     background-color: var(--card-background);
     border: 1px solid var(--border-color);
@@ -80,14 +79,10 @@ nav a {
     white-space: nowrap;
 }
 
-nav a:hover {
+.nav-menu a:hover {
     background-color: var(--accent-color);
     color: var(--background-color);
     transform: translateY(-2px);
-}
-
-nav a::after {
-    display: none;
 }
 
 /* メインコンテンツ */
