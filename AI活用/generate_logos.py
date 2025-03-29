@@ -3,7 +3,21 @@ import os
 
 # サービス名のリスト
 services = [
-    "a16z"
+    "Bolt",
+    "Yoom",
+    "Windsurf Editor",
+    "Lovable",
+    "Make",
+    "Manus",
+    "ChatGPT Operator",
+    "神威",
+    "Mapify",
+    "NoLang",
+    "Fragments",
+    "Aomni",
+    "Origami",
+    "IruSiru",
+    "HeyGen"
 ]
 
 def generate_logo(service_name):
@@ -11,11 +25,11 @@ def generate_logo(service_name):
     size = (120, 120)
     
     # 新しい画像を作成（白背景）
-    image = Image.new('RGB', size, '#f5f5f5')
+    image = Image.new('RGB', size, '#FFFFFF')
     draw = ImageDraw.Draw(image)
     
     # フォントサイズをサービス名の長さに応じて調整
-    font_size = min(24, 24 - (len(service_name) - 4) * 2)
+    font_size = min(32, int(120 / (len(service_name) * 0.6)))
     
     try:
         # システムフォントを使用
@@ -33,27 +47,27 @@ def generate_logo(service_name):
     x = (size[0] - text_width) / 2
     y = (size[1] - text_height) / 2
     
-    # 外側の円を描画
-    circle_margin = 15
+    # アクセントカラーをサービス名から生成
+    import hashlib
+    hash_value = int(hashlib.md5(service_name.encode()).hexdigest(), 16)
+    accent_color = '#{:06x}'.format(hash_value % 0x1000000)
+    
+    # 背景の円を描画
+    circle_margin = 10
     draw.ellipse([circle_margin, circle_margin, size[0]-circle_margin, size[1]-circle_margin], 
-                 outline='#1a1a1a', width=2)
+                 fill=accent_color)
     
-    # 内側の円を描画
-    inner_margin = 25
-    draw.ellipse([inner_margin, inner_margin, size[0]-inner_margin, size[1]-inner_margin], 
-                 outline='#1a1a1a', width=1)
-    
-    # テキストを描画
-    draw.text((x, y), service_name, font=font, fill='#1a1a1a')
+    # テキストを描画（白色で）
+    draw.text((x, y), service_name, font=font, fill='#FFFFFF')
     
     # 画像を保存
     if not os.path.exists('images'):
         os.makedirs('images')
-    image.save(f'images/{service_name.lower()}.png')
+    image.save(f'images/{service_name.lower().replace(" ", "-")}.png')
 
 def main():
     for service in services:
         generate_logo(service)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main() 
