@@ -103,7 +103,7 @@ header h1 {
 .nav-menu li:nth-child(1)::before,
 .nav-menu li:nth-child(2)::before,
 .nav-menu li:nth-child(5)::before,
-.nav-menu li:nth-child(9)::before {
+.nav-menu li:nth-child(10)::before {
     content: '';
     position: absolute;
     left: -12px;
@@ -487,7 +487,7 @@ footer p {
     .nav-menu li:nth-child(1)::before,
     .nav-menu li:nth-child(2)::before,
     .nav-menu li:nth-child(5)::before,
-    .nav-menu li:nth-child(9)::before {
+    .nav-menu li:nth-child(10)::before {
         left: -8px;
         height: 16px;
     }
