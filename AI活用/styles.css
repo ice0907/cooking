@@ -52,37 +52,105 @@ header h1 {
 /* ナビゲーションメニュー */
 .nav-menu {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     list-style: none;
-    padding: 10px;
+    padding: 16px;
     margin: 0;
-    background-color: #f8f9fa;
-    border-radius: 8px;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    gap: 8px;
+    border: 1px solid var(--border-color);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-menu::-webkit-scrollbar {
+    height: 4px;
+}
+
+.nav-menu::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+.nav-menu::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 2px;
 }
 
 .nav-menu li {
     margin: 0;
+    position: relative;
+}
+
+/* カテゴリ区切り */
+.nav-menu li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 16px;
+    background: var(--border-color);
+    opacity: 0.3;
+}
+
+/* カテゴリ間のスペース */
+.nav-menu li:nth-child(1)::before,
+.nav-menu li:nth-child(2)::before,
+.nav-menu li:nth-child(5)::before,
+.nav-menu li:nth-child(9)::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 24px;
+    background: var(--accent-color);
+    opacity: 0.3;
+    border-radius: 1px;
 }
 
 .nav-menu a {
-    color: #333;
+    color: var(--text-color);
     text-decoration: none;
     padding: 8px 16px;
     display: block;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
+    border-radius: 8px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .nav-menu a:hover {
-    color: #007bff;
+    color: var(--accent-color);
+    transform: translateY(-2px);
 }
 
 .nav-menu a.active {
-    background-color: #007bff;
-    color: white;
-    border-radius: 4px;
+    color: var(--accent-color);
+    font-weight: 600;
+    position: relative;
+    background: rgba(255, 221, 0, 0.1);
+}
+
+.nav-menu a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 2px;
+    background: var(--accent-color);
+    border-radius: 1px;
 }
 
 /* メインコンテンツ */
@@ -191,60 +259,62 @@ main {
 /* ツールカード */
 .tools {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 24px;
+    margin: 32px 0;
 }
 
 .tool-card {
-    background-color: var(--card-background);
-    border-radius: 0;
-    padding: 2rem;
+    background: var(--card-background);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
     box-shadow: var(--shadow-md);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
     border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
     display: flex;
-    flex-direction: column;
-    min-height: 400px;
+    align-items: flex-start;
+    gap: 24px;
 }
 
-.tool-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.tool-info h3 {
-    color: var(--text-color);
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
-
-.tool-info p {
-    color: var(--text-color);
-    opacity: 0.8;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
+.tool-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-color);
 }
 
 .tool-logo {
     width: 120px;
     height: 120px;
-    margin-bottom: 1.5rem;
-    border-radius: 0;
     object-fit: contain;
-    transition: transform 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 1rem;
+    background-color: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+}
+
+.tool-info {
+    flex: 1;
+}
+
+.tool-info h3 {
+    color: var(--accent-color);
+    margin-bottom: 12px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.tool-info p {
+    margin-bottom: 16px;
+    opacity: 0.9;
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .tool-actions {
-    margin-top: auto;
     display: flex;
-    justify-content: center;
+    gap: 12px;
 }
 
 /* ボタン */
@@ -400,13 +470,49 @@ footer p {
     }
 
     .nav-menu {
-        gap: 3px;
-        margin: 15px 0;
+        padding: 12px;
+        gap: 4px;
     }
 
     .nav-menu a {
-        padding: 4px 8px;
-        font-size: 0.8rem;
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+
+    .nav-menu li:not(:last-child)::after {
+        right: -2px;
+        height: 12px;
+    }
+
+    .nav-menu li:nth-child(1)::before,
+    .nav-menu li:nth-child(2)::before,
+    .nav-menu li:nth-child(5)::before,
+    .nav-menu li:nth-child(9)::before {
+        left: -8px;
+        height: 16px;
+    }
+
+    .tools {
+        grid-template-columns: 1fr;
+    }
+
+    .tool-card {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .tool-logo {
+        width: 80px;
+        height: 80px;
+        padding: 8px;
+    }
+
+    .tool-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .tool-info p {
+        font-size: 0.9rem;
     }
 }
 
