@@ -1,26 +1,27 @@
 from PIL import Image, ImageDraw, ImageFont
 import os
+import re
 
-# サービス名のリスト
-services = [
-    "Bolt",
-    "Yoom",
-    "Windsurf Editor",
-    "Lovable",
-    "Make",
-    "Manus",
-    "ChatGPT Operator",
-    "神威",
-    "Mapify",
-    "NoLang",
-    "Fragments",
-    "Aomni",
-    "Origami",
-    "IruSiru",
-    "HeyGen"
-]
+# サービス名とファイル名のマッピング
+services = {
+    "Bolt": "bolt",
+    "Yoom": "yoom",
+    "Windsurf Editor": "windsurf",
+    "Lovable": "lovable",
+    "Make": "make",
+    "Manus": "manus",
+    "ChatGPT Operator": "chatgpt-operator",
+    "神威": "kamui",
+    "Mapify": "mapify",
+    "NoLang": "nolang",
+    "Fragments": "fragments",
+    "Aomni": "aomni",
+    "Origami": "origami",
+    "IruSiru": "irusiru",
+    "HeyGen": "heygen"
+}
 
-def generate_logo(service_name):
+def generate_logo(service_name, file_name):
     # 画像サイズ
     size = (120, 120)
     
@@ -32,11 +33,13 @@ def generate_logo(service_name):
     font_size = min(32, int(120 / (len(service_name) * 0.6)))
     
     try:
-        # システムフォントを使用
-        font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", font_size)
+        # システムフォントを使用（日本語対応）
+        font = ImageFont.truetype("/System/Library/Fonts/ヒラギノ角ゴシック W6.ttc", font_size)
     except:
-        # フォールバック
-        font = ImageFont.load_default()
+        try:
+            font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", font_size)
+        except:
+            font = ImageFont.load_default()
     
     # テキストのバウンディングボックスを取得
     bbox = draw.textbbox((0, 0), service_name, font=font)
@@ -63,11 +66,12 @@ def generate_logo(service_name):
     # 画像を保存
     if not os.path.exists('images'):
         os.makedirs('images')
-    image.save(f'images/{service_name.lower().replace(" ", "-")}.png')
+    image.save(f'images/{file_name}.png')
 
 def main():
-    for service in services:
-        generate_logo(service)
+    for service_name, file_name in services.items():
+        print(f"Generating logo for {service_name} as {file_name}.png")
+        generate_logo(service_name, file_name)
 
 if __name__ == "__main__":
     main() 
