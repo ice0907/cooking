@@ -820,6 +820,8 @@ footer p {
     vertical-align: top;
     color: var(--text-color);
     word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
     min-width: 120px;
 }
 
@@ -863,16 +865,22 @@ footer p {
         padding: 1rem;
         margin: 0;
         border-radius: 8px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .comparison table {
         font-size: 0.85rem;
+        min-width: 600px;
     }
 
     .comparison th,
     .comparison td {
         padding: 0.8rem;
-        min-width: 100px;
+        min-width: 150px;
+        max-width: 250px;
+        font-size: 0.85rem;
+        line-height: 1.4;
     }
 
     .comparison td:first-child {
@@ -880,19 +888,28 @@ footer p {
         left: 0;
         background-color: var(--card-background);
         z-index: 1;
+        min-width: 100px;
+        max-width: 120px;
     }
 
-    .comparison h2 {
-        font-size: 1.5rem;
-        padding: 0 1rem;
+    .comparison pre,
+    .comparison code {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        word-break: break-word;
+        font-size: 0.8rem;
+        line-height: 1.4;
+        padding: 0.5rem;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        overflow-x: auto;
     }
 
     .toggle-content {
         max-width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        white-space: pre-wrap;
+        overflow-x: hidden;
         word-wrap: break-word;
+        word-break: break-word;
     }
 
     .tool-card {
@@ -912,13 +929,5 @@ footer p {
     main {
         padding: 1rem;
         overflow-x: hidden;
-    }
-
-    .comparison pre,
-    .comparison code {
-        max-width: 100%;
-        overflow-x: auto;
-        white-space: pre-wrap;
-        word-wrap: break-word;
     }
 } 
