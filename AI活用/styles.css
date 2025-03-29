@@ -294,6 +294,26 @@ main {
     flex-shrink: 0;
 }
 
+/* ロゴが読み込めない場合のフォールバック */
+.tool-logo[src=""] {
+    background-color: var(--card-background);
+    border: 2px solid var(--accent-color);
+    position: relative;
+}
+
+.tool-logo[src=""]:after {
+    content: attr(alt);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--accent-color);
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+
 .tool-info {
     flex: 1;
 }
@@ -486,6 +506,11 @@ footer p {
         width: 80px;
         height: 80px;
         padding: 8px;
+    }
+
+    .tool-logo[src=""]:after {
+        font-size: 0.9rem;
+        padding: 0.25rem;
     }
 
     .tool-info h3 {
