@@ -58,9 +58,10 @@ header h1 {
     list-style: none;
     padding: 1rem;
     margin: 0;
-    background-color: #f8f9fa;
+    background-color: var(--card-background);
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
 }
 
 .nav-menu li {
@@ -69,7 +70,7 @@ header h1 {
 
 .nav-menu a {
     text-decoration: none;
-    color: #333;
+    color: var(--text-color);
     padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: all 0.3s ease;
@@ -77,13 +78,13 @@ header h1 {
 }
 
 .nav-menu a:hover {
-    background-color: #007bff;
-    color: white;
+    background-color: var(--accent-color);
+    color: var(--background-color);
 }
 
 .nav-menu a.active {
-    background-color: #007bff;
-    color: white;
+    background-color: var(--accent-color);
+    color: var(--background-color);
 }
 
 /* メインコンテンツ */
