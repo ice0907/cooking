@@ -50,7 +50,7 @@ header h1 {
 }
 
 /* ナビゲーションメニュー */
-header nav .nav-menu {
+.nav-menu {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -58,34 +58,30 @@ header nav .nav-menu {
     list-style: none;
     padding: 1rem;
     margin: 0;
-    background-color: #1a1a1a;
+    background-color: #f8f9fa;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
 }
 
-header nav .nav-menu li {
+.nav-menu li {
     margin: 0 0.5rem;
-    padding: 0;
 }
 
-header nav .nav-menu a {
+.nav-menu a {
     text-decoration: none;
-    color: #ffffff;
+    color: #333;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: all 0.3s ease;
     font-weight: 500;
-    display: block;
 }
 
-header nav .nav-menu a:hover {
+.nav-menu a:hover {
     background-color: #007bff;
     color: white;
-    transform: translateY(-1px);
 }
 
-header nav .nav-menu a.active {
+.nav-menu a.active {
     background-color: #007bff;
     color: white;
 }
