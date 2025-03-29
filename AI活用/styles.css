@@ -295,6 +295,12 @@ main {
     flex-shrink: 0;
 }
 
+/* SVGロゴ用のスタイル */
+.tool-logo[src$=".svg"] {
+    background-color: transparent;
+    padding: 8px;
+}
+
 /* ロゴが読み込めない場合のフォールバック */
 .tool-logo[src=""] {
     background-color: var(--card-background);
@@ -513,6 +519,10 @@ footer p {
         width: 80px;
         height: 80px;
         padding: 8px;
+    }
+
+    .tool-logo[src$=".svg"] {
+        padding: 4px;
     }
 
     .tool-logo[src=""]:after {
