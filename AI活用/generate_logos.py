@@ -24,8 +24,9 @@ services = {
     "Flowith": "flowith",
     "Zapier": "zapier",
     "Pika": "pika",
-    "Devin": "devin",
-    "Mastra": "mastra"
+    "devin": "https://cognition-labs.com/",
+    "mastra": "https://mastra.ai/",
+    "sora": "https://openai.com/ja-JP/sora/"
 }
 
 def generate_logo(service_name, file_name):
