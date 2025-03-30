@@ -19,7 +19,8 @@ services = {
     "Origami": "origami",
     "IruSiru": "irusiru",
     "HeyGen": "heygen",
-    "Rork": "rork"
+    "Rork": "rork",
+    "AI HUB": "aihub"
 }
 
 def generate_logo(service_name, file_name):
