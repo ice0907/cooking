@@ -24,9 +24,10 @@ services = {
     "Flowith": "flowith",
     "Zapier": "zapier",
     "Pika": "pika",
-    "devin": "https://cognition-labs.com/",
-    "mastra": "https://mastra.ai/",
-    "sora": "https://openai.com/ja-JP/sora/"
+    "sora": "https://openai.com/ja-JP/sora/",
+    "geospy": "https://geospy.ai/",
+    "abacus": "https://abacus.ai/",
+    "deepsite": "https://enzostvs-deepsite.hf.space/"
 }
 
 def generate_logo(service_name, file_name):
